@@ -2,6 +2,7 @@ package com.example.gestioncommandes.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,9 +17,11 @@ import com.example.gestioncommandes.adapters.OrderAdapter;
 import com.example.gestioncommandes.models.Order;
 import com.example.gestioncommandes.utils.OrderGenerator;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    private static final int REQUEST_CODE_CONTAINER_CONFIG = 1; // Définir la constante
     private List<Order> orders;
     private OrderAdapter adapter;
 
@@ -51,6 +54,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             });
             recyclerView.setAdapter(adapter);
+        });
+
+        Button buttonConfigureContainer = findViewById(R.id.buttonConfigureContainer);
+        buttonConfigureContainer.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, ContainerConfigActivity.class);
+            intent.putExtra("ORDERS_LIST", new ArrayList<>(orders));
+            startActivityForResult(intent, REQUEST_CODE_CONTAINER_CONFIG);
         });
     }
 }
