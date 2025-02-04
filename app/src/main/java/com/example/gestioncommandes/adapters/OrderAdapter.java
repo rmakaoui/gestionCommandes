@@ -1,5 +1,6 @@
 package com.example.gestioncommandes.adapters;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,10 +53,12 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
         }
 
         public void bind(Order order) {
-            orderId.setText("Order #" + order.getOrderId());
-            orderWeight.setText("Weight: " + order.getWeight() + " kg");
-            orderVolume.setText("Volume: " + order.getVolume() + " m³");
-            orderPrice.setText("Price: $" + order.getPrice());
+            Context context = itemView.getContext();  // On récupère le contexte ici
+            orderId.setText(context.getString(R.string.order_number) + order.getOrderId());
+            orderWeight.setText(context.getString(R.string.weight) + ": " + order.getWeight() + " kg");
+            orderVolume.setText(context.getString(R.string.volume) + ": " + order.getVolume() + " m³");
+            orderPrice.setText(order.getPrice() + " " + context.getString(R.string.price));
+
         }
     }
 

@@ -2,12 +2,10 @@ package com.example.gestioncommandes.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,9 +20,7 @@ import java.util.List;
 public class ShippingResultActivity extends AppCompatActivity {
 
     private List<Order> orders;
-
-    private double maxWeight,maxVolume;
-
+    private double maxWeight, maxVolume;
     private OrderAdapter adapter;
 
     @Override
@@ -32,37 +28,53 @@ public class ShippingResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shipping_result);
 
-        // Récupérer les valeurs configurées
-
-
-        Intent intent = getIntent();
-        if (intent != null && intent.hasExtra("ORDERS_LIST")) {
-            maxWeight = getIntent().getDoubleExtra("MAX_WEIGHT", 100);
-            maxVolume = getIntent().getDoubleExtra("MAX_VOLUME", 50);
-            orders = (List<Order>) intent.getSerializableExtra("ORDERS_LIST");
-        } else {
-            orders = new ArrayList<>(); // Liste vide si aucune donnée n'est passée
-        }
-
-        List<Order> bestCombination = KnapsackSolver.findBestCombination(orders, maxWeight, maxVolume);
-
+        TextView emptyMessage = findViewById(R.id.emptyMessage);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        adapter = new OrderAdapter(bestCombination, order -> {
-            // Naviguer vers l'écran de détails
-            Intent intent2 = new Intent(ShippingResultActivity.this, OrderDetailActivity.class);
-            intent2.putExtra("ORDER", order);
-            startActivity(intent2);
-        });
-        recyclerView.setAdapter(adapter);
+        // Récupérer les valeurs de l'intent
+        Intent intent = getIntent();
+        if (intent != null && intent.hasExtra("ORDERS_LIST")) {
+            maxWeight = intent.getDoubleExtra("MAX_WEIGHT", 100);
+            maxVolume = intent.getDoubleExtra("MAX_VOLUME", 50);
+
+            Object receivedOrders = intent.getSerializableExtra("ORDERS_LIST");
+            if (receivedOrders instanceof ArrayList<?>) {
+                orders = (ArrayList<Order>) receivedOrders;
+            } else {
+                orders = new ArrayList<>();
+            }
+        } else {
+            orders = new ArrayList<>();
+        }
+
+        // Appliquer l'algorithme de sélection
+        List<Order> bestCombination = KnapsackSolver.findBestCombination(orders, maxWeight, maxVolume);
+
+        // Vérifier si la liste est vide
+        if (bestCombination.isEmpty()) {
+            String message = getString(R.string.no_orders_message);
+            emptyMessage.setText(message);
+            emptyMessage.setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.GONE);
+        } else {
+            emptyMessage.setVisibility(View.GONE);
+            recyclerView.setVisibility(View.VISIBLE);
+
+            adapter = new OrderAdapter(bestCombination, order -> {
+                Intent intent2 = new Intent(ShippingResultActivity.this, OrderDetailActivity.class);
+                intent2.putExtra("ORDER", order);
+                startActivity(intent2);
+            });
+            recyclerView.setAdapter(adapter);
+        }
 
         // Afficher les ordres dans la console (pour vérification)
         displayOrdersInConsole(bestCombination);
         System.out.println("VS");
         displayOrdersInConsole(orders);
     }
-    private void displayOrdersInConsole(List<Order> bestCombination ) {
+    private void displayOrdersInConsole(List<Order> bestCombination) {
         System.out.println("ShippingResult activity");
         for (Order order : bestCombination) {
             System.out.println("Order #" + order.getOrderId() +
@@ -73,5 +85,4 @@ public class ShippingResultActivity extends AppCompatActivity {
                     ", Fragile: " + (order.isFragile() ? "Yes" : "No"));
         }
     }
-
 }

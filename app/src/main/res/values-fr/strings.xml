@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Gestion des Commandes</string>
+    <string name="no_orders_message">Aucune commande ne correspond à vos critères.</string>
+    <string name="display_others">Afficher d\'autres</string>
+    <string name="max_weight">Poids Max (kg)</string>
+    <string name="max_volume">Volume Max (m³)</string>
+    <string name="save">Enregistrer</string>
+    <string name="reset">Réinitialiser</string>
+    <string name="regenerateOrders">Regénerer les commandes</string>
+    <string name="configureContainer">Configurer le conteneur</string>
+    <string name="order_detail">Commande #</string>
+    <string name="order_list">Liste des commandes</string>
+    <string name="selected_orders">Commandes selectionnées</string>
+    <string name="weight">Poids</string>
+    <string name="kg">kg</string>
+    <string name="volume">Volume</string>
+    <string name="m3">m³</string>
+    <string name="price">Prix</string>
+    <string name="usd">$</string>
+    <string name="priority">Priorité</string>
+    <string name="high">Fort</string>
+    <string name="medium">Moyenne</string>
+    <string name="low">Faible</string>
+    <string name="unknown">Inconnu</string>
+    <string name="fragile">Fragile</string>
+    <string name="yes">Oui</string>
+    <string name="no">Non</string>
+    <string name="order_number">Commande n°</string>
+    <string name="container_configuration">Configuration du Conteneur</string>
+</resources>

@@ -34,10 +34,10 @@ public class OrderDetailActivity extends AppCompatActivity {
             TextView detailOrderPriority = findViewById(R.id.detailOrderPriority);
             TextView detailOrderFragile = findViewById(R.id.detailOrderFragile);
 
-            detailOrderId.setText("Order #" + order.getOrderId());
-            detailOrderWeight.setText("Weight: " + order.getWeight() + " kg");
-            detailOrderVolume.setText("Volume: " + order.getVolume() + " m³");
-            detailOrderPrice.setText("Price: $" + order.getPrice());
+            detailOrderId.setText(getString(R.string.order_detail) + " : " + order.getOrderId());
+            detailOrderWeight.setText(getString(R.string.weight) + " : " + order.getWeight() + " " + getString(R.string.kg));
+            detailOrderVolume.setText(getString(R.string.volume) + " : " + order.getVolume() + " " + getString(R.string.m3));
+            detailOrderPrice.setText(getString(R.string.price) + " : " + getString(R.string.usd) + order.getPrice());
 
             // Afficher la priorité sous forme de texte
             String priorityText;
@@ -54,11 +54,11 @@ public class OrderDetailActivity extends AppCompatActivity {
                 default:
                     priorityText = "Unknown";
             }
-            detailOrderPriority.setText("Priority: " + priorityText);
+            detailOrderPriority.setText(getString(R.string.priority) + " " + priorityText);
 
             // Afficher la fragilité sous forme de texte
-            String fragileText = order.isFragile() ? "Yes" : "No";
-            detailOrderFragile.setText("Fragile: " + fragileText);
+            String fragileText = order.isFragile() ? getString(R.string.yes) : getString(R.string.no);
+            detailOrderFragile.setText(getString(R.string.fragile) + " : " + fragileText);
         }
     }
 }

@@ -1,33 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:background="@android:color/white">
 
-    <!-- RecyclerView pour afficher la liste des commandes -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:scrollbars="vertical"
-        android:layout_marginBottom="10dp" /> <!-- 10px au-dessus du bouton -->
-
-    <!-- Bouton pour régénérer la liste des commandes -->
-    <Button
-        android:id="@+id/regenerateButton"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="10dp"
-        android:text="Regenerate Orders" />
-    <Button
-        android:id="@+id/buttonConfigureContainer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Configure Container"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp" />
+        android:background="@android:color/white"
+        android:elevation="4dp">
 
-</LinearLayout>
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/white"
+            app:title="@string/order_list"
+            app:titleTextColor="@android:color/black"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:background="@android:color/white"
+        android:gravity="center">
+
+        <!-- RecyclerView pour afficher la liste des commandes -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:scrollbars="vertical"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Bouton pour régénérer la liste des commandes -->
+        <Button
+            android:id="@+id/regenerateButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="0dp"
+            android:text="@string/regenerateOrders"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="12dp"
+            app:cornerRadius="8dp"
+            app:elevation="4dp" />
+
+        <!-- Bouton pour configurer le conteneur -->
+        <Button
+            android:id="@+id/buttonConfigureContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/configureContainer"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="4dp"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="10dp"
+            app:cornerRadius="8dp"
+            app:elevation="4dp" />
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
