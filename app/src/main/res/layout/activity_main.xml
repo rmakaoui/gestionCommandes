@@ -23,6 +23,14 @@
         android:layout_marginBottom="10dp"
         android:text="Regenerate Orders" />
     <Button
+        android:id="@+id/buttonUseContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Use Existing Container"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:visibility="gone"/>
+    <Button
         android:id="@+id/buttonConfigureContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

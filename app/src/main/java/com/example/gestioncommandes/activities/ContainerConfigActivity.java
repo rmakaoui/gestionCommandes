@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.gestioncommandes.R;
+import com.example.gestioncommandes.models.Container;
 import com.example.gestioncommandes.models.Order;
 
 import java.util.ArrayList;
@@ -71,7 +72,12 @@ public class ContainerConfigActivity extends AppCompatActivity {
         builder.setTitle("Container Configuration")
                 .setMessage("Max Weight: " + maxWeight + " kg\nMax Volume: " + maxVolume + " m³")
                 .setPositiveButton("Confirm", (dialog, which) -> {
-                    // Retourner les valeurs à l'activité principale
+                    // Store values in SharedPreferences
+                    Container container = Container.getInstance(this);
+                    container.setMaxWeight(maxWeight);
+                    container.setMaxVolume(maxVolume);
+
+                    // Pass data to next activity
                     Intent resultIntent = new Intent(ContainerConfigActivity.this, ShippingResultActivity.class);
                     resultIntent.putExtra("MAX_WEIGHT", maxWeight);
                     resultIntent.putExtra("MAX_VOLUME", maxVolume);
@@ -79,13 +85,11 @@ public class ContainerConfigActivity extends AppCompatActivity {
                     setResult(RESULT_OK, resultIntent);
                     startActivityForResult(resultIntent, REQUEST_CODE_CONTAINER_CONFIG);
                 })
-                .setNegativeButton("Cancel", (dialog, which) -> {
-                    // Ne rien faire, fermer la boîte de dialogue
-                    dialog.dismiss();
-                })
+                .setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss())
                 .setIcon(android.R.drawable.ic_dialog_info)
                 .show();
     }
+
 
     private void displayOrdersInConsole() {
         System.out.println("Container config !");
