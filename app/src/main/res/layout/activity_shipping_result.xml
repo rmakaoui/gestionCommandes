@@ -9,7 +9,7 @@
         android:id="@+id/ordersTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Orders summary"
+        android:text="Shipping summary"
         android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="@android:color/white"

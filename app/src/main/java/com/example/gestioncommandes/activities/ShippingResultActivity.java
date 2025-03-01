@@ -16,6 +16,7 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextPaint;
 import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 import android.widget.Button;
 import android.widget.Toast;
@@ -201,4 +202,6 @@ public class ShippingResultActivity extends AppCompatActivity {
                 .setIcon(android.R.drawable.ic_dialog_info)
                 .show();
     }
+
+
 }

@@ -12,6 +12,7 @@ import com.example.gestioncommandes.R;
 import com.example.gestioncommandes.models.Order;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -60,5 +61,9 @@ public class OrderDetailActivity extends AppCompatActivity {
             String fragileText = order.isFragile() ? "Yes" : "No";
             detailOrderFragile.setText("Fragile: " + fragileText);
         }
+
+        // Bouton pour revenir à l'écran précédent
+        Button buttonReturn = findViewById(R.id.buttonReturn);
+        buttonReturn.setOnClickListener(v -> finish());
     }
 }
