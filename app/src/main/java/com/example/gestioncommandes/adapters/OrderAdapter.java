@@ -11,6 +11,7 @@ import com.example.gestioncommandes.R;
 import com.example.gestioncommandes.models.Order;
 
 import java.util.List;
+import android.content.Context;
 
 public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHolder> {
     private List<Order> orders;
@@ -52,10 +53,11 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
         }
 
         public void bind(Order order) {
-            orderId.setText("Order #" + order.getOrderId());
-            orderWeight.setText("Weight: " + order.getWeight() + " kg");
-            orderVolume.setText("Volume: " + order.getVolume() + " m³");
-            orderPrice.setText("Price: $" + order.getPrice());
+            Context context = itemView.getContext();  // On récupère le contexte ici
+            orderId.setText(context.getString(R.string.order_number) + order.getOrderId());
+            orderWeight.setText(context.getString(R.string.weight) + ": " + order.getWeight() + " kg");
+            orderVolume.setText(context.getString(R.string.volume) + ": " + order.getVolume() + " m³");
+            orderPrice.setText(context.getString(R.string.price) + ": " + order.getPrice() + "$");
         }
     }
 

@@ -49,12 +49,12 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="10dp"
         style="@style/PrimaryButton"
-        android:text="Regenerate Orders" />
+        android:text="@string/regenerateOrders" />
     <Button
         android:id="@+id/buttonUseContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Use Existing Container"
+        android:text="@string/useExistedContainer"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
         style="@style/SecondaryButton"
@@ -63,8 +63,8 @@
         android:id="@+id/buttonConfigureContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Configure Container"
         style="@style/SecondaryButton"
+        android:text="@string/configureContainer"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp" />
 

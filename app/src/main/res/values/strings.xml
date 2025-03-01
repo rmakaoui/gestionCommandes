@@ -1,3 +1,34 @@
 <resources>
-    <string name="app_name">GestionCommandes</string>
+    <string name="app_name">Order Management</string>
+    <string name="no_orders_message">No orders match your criteria.</string>
+    <string name="display_others">Display Others</string>
+    <string name="max_weight">Max Weight (kg)</string>
+    <string name="max_volume">Max Volume (m³)</string>
+    <string name="save">Save</string>
+    <string name="reset">Reset</string>
+    <string name="regenerateOrders">Regenerate Orders</string>
+    <string name="configureContainer">Configure Container</string>
+    <string name="order_detail">Order #</string>
+    <string name="order_list">Order List</string>
+    <string name="selected_orders">Selected Orders</string>
+    <string name="weight">Weight</string>
+    <string name="kg">kg</string>
+    <string name="volume">Volume</string>
+    <string name="m3">m³</string>
+    <string name="price">Price</string>
+    <string name="usd">$</string>
+    <string name="priority">Priority</string>
+    <string name="high">High</string>
+    <string name="medium">Medium</string>
+    <string name="low">Low</string>
+    <string name="unknown">Unknown</string>
+    <string name="fragile">Fragile</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="order_number">Order n°</string>
+    <string name="container_configuration">Container Configuration</string>
+    <string name="validateLeave">Validate and leave</string>
+    <string name="showAllOrders">List of orders</string>
+    <string name="useExistedContainer">Use existed container</string>
+
 </resources>
