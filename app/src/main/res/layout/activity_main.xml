@@ -5,6 +5,33 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <!-- Titre de la page -->
+    <TextView
+        android:id="@+id/ordersTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Orders Management"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:background="@color/titleBackgroundColor"
+        android:padding="16dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="start" />
+
+    <TextView
+        android:id="@+id/ordersSectionTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Orders List"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:padding="8dp"
+        android:layout_marginBottom="5dp"
+        android:gravity="start" />
+
+
     <!-- RecyclerView pour afficher la liste des commandes -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -15,12 +42,14 @@
         android:layout_marginBottom="10dp" /> <!-- 10px au-dessus du bouton -->
 
     <!-- Bouton pour régénérer la liste des commandes -->
+
     <Button
         android:id="@+id/regenerateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="10dp"
+        style="@style/PrimaryButton"
         android:text="Regenerate Orders" />
     <Button
         android:id="@+id/buttonUseContainer"
@@ -29,12 +58,14 @@
         android:text="Use Existing Container"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
+        style="@style/SecondaryButton"
         android:visibility="gone"/>
     <Button
         android:id="@+id/buttonConfigureContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Configure Container"
+        style="@style/SecondaryButton"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp" />
 

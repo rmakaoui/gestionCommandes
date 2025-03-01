@@ -4,7 +4,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp">
-
+    <!-- Titre de la page -->
+    <TextView
+        android:id="@+id/ordersTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Orders summary"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:background="@color/titleBackgroundColor"
+        android:padding="16dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="start" />
     <Button
         android:id="@+id/buttonShowOrders"
         android:layout_width="wrap_content"
